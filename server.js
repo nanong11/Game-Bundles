@@ -1,7 +1,6 @@
 //express JS
 const express = require(`express`);
 const app = express();
-const PORT = 3011;
 
 //prevent blocking of request from client esp different domains
 const cors = require(`cors`);
@@ -23,9 +22,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once(`open`, () => console.log(`Connected to Database..`));
 
-//for routes
+//for importing routes
 const userRoutes = require(`./routes/userRoutes`)
 app.use(`/api/users`, userRoutes)
 
-
+//for server checking
+const PORT = process.env.PORT || 3011;
 app.listen(PORT, console.log(`Connected to server ${PORT}..`));

@@ -26,6 +26,6 @@ const userSchema = mongoose.Schema({
         default: false
     },
     gameBundles: []
-})
+}, {timestamps: true})
 
 module.exports = mongoose.model(`User`, userSchema)
