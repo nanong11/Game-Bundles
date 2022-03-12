@@ -4,21 +4,20 @@ const User = require(`../models/User`)
 
 //GET ALL USERS - return all the users info
 module.exports.getAllUsers = async() => {
-    return await User.find().then(result => result)
-}
+    return await User.find().then(result => result)}
 
-//SiGN UP A USER - return true or false
+//SiGN UP A USER - return result
 module.exports.signUp = async (reqBody) => {
     const {firstName, lastName, email, password} = reqBody
     const newUser = new User({
         firstName, lastName, email, 
         password: CryptoJS.AES.encrypt(password, process.env.ACCESS_TOKEN_SECRET).toString()
     })
-    return await newUser.save().then(result => result ? result : false)}
+    return await newUser.save().then(result => result)}
 
 //CHECK IF EMAIL EXIST - return true or false
 module.exports.checkEmail = async (email) => {
-    return await User.findOne({email}).then(result => result ? result : false)}
+    return await User.findOne({email}).then(result => result ? true : false)}
 
 //LOGIN - return a token or false
 module.exports.login = async (reqBody) => {

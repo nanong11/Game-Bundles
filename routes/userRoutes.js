@@ -3,7 +3,7 @@ const router = express.Router()
 const userController = require(`../controllers/userControllers`)
 const auth = require(`../middlewares/auth`)
 
-//GET ALL USERS - received all users info
+//GET ALL USERS - received and return all users info or error
 router.get(`/`, async (req, res) => {
     try {
         await userController.getAllUsers().then(result => res.send(result))
@@ -12,7 +12,7 @@ router.get(`/`, async (req, res) => {
     }
 })
 
-//SIGN UP A USER - received and return true or error
+//SIGN UP A USER - received and return result or error
 router.post(`/signup`, async (req, res) => {
     try {
         await userController.signUp(req.body).then(result => res.send(result))
@@ -21,7 +21,7 @@ router.post(`/signup`, async (req, res) => {
     }
 })
 
-//CHECK IF EMAIL EXIST - receive and return true or error
+//CHECK IF EMAIL EXIST - receive and return true or false
 router.post(`/check-email`, async (req, res) => {
     try {
         await userController.checkEmail(req.body.email).then(result => res.send(result))
