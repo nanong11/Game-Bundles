@@ -26,7 +26,7 @@ db.once(`open`, () => console.log(`Connected to Database..`));
 const userRoutes = require(`./routes/userRoutes`);
 app.use(`/api/users`, userRoutes);
 
-app.set(`views`, __dirname + `/client`);
+app.use(express.static(__dirname + "/client"));
 
 //for server checking
 const PORT = process.env.PORT || 3011;

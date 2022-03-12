@@ -19,7 +19,7 @@ const signUp = ((e,form) => {
             if(result){
                 alert(`Email is already in use.`)
             }else if(result === false){
-                fetch(`http://localhost:3011/api/users/signup`, {
+                fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/signup`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
