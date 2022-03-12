@@ -23,8 +23,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once(`open`, () => console.log(`Connected to Database..`));
 
 //for importing routes
-const userRoutes = require(`./routes/userRoutes`)
-app.use(`/api/users`, userRoutes)
+const userRoutes = require(`./routes/userRoutes`);
+app.use(`/api/users`, userRoutes);
+
+app.set(`views`, __dirname + `/client`);
 
 //for server checking
 const PORT = process.env.PORT || 3011;
