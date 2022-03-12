@@ -24,8 +24,7 @@ const userSchema = mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    },
-    gameBundles: []
+    }
 }, {timestamps: true})
 
 module.exports = mongoose.model(`User`, userSchema)
