@@ -28,9 +28,13 @@ loginForm.addEventListener(`submit`, (e) => {
             })
             .then(result => result.json())
             .then(result => {
-                if(result){
+                if(result.isAdmin){
+                    console.log(result.isAdmin)
                     alert(`Login Seccussful`)
-                    return window.location.href = "../pages/user/user.html"
+                    return window.location.href = "./sessions/admin/admin.html"
+                }else if(!result.isAdmin){
+                    alert(`Login Seccussful`)
+                    return window.location.href = "./user/user.html"
                 }else{
                     return alert(`Cannot login. Please try again.`)
                 }
