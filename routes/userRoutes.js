@@ -4,7 +4,7 @@ const userController = require(`../controllers/userControllers`)
 const auth = require(`../middlewares/auth`)
 
 //GET ALL USERS - received and return all users info or error
-router.get(`/`, auth.verifyIfAdmin, async (req, res) => {
+router.get(`/`, /* auth.verifyIfAdmin, */ async (req, res) => {
     try {
         await userController.getAllUsers().then(result => res.send(result))
     } catch (error) {
