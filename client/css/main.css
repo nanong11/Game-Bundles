@@ -23,8 +23,11 @@ body{
 .nav-container{
     background-color: #3b3e48;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(219, 215, 215, 0.5);
 }
-
+.nav-container-light{
+    box-shadow: 0px 0px 10px 1px #3b3e48;
+}
 .navbar-brand{
     font-weight: 700;
 }
@@ -45,6 +48,12 @@ body{
     font-weight: 700;
     text-decoration: none;
 }
+.btn{
+    background-color: rgb(15, 108, 196);
+}
+.btn:hover{
+    background-color: rgb(57, 188, 240);
+}
 .signup-btn a{
     font-size: 1.3rem;
     font-weight: 500;
@@ -53,11 +62,26 @@ body{
 .btn-signup:hover{
     background-color: #1175a7;
 }
+.box{
+    background-color: #3b3e48;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 1px rgba(143, 142, 142, 0.5);
+}
 form{
     color: #4a4a4a;
-    box-shadow: 0px 0px 16px 1px rgba(74,74,74,0.5);
+    box-shadow: 0px 0px 16px 1px rgba(202, 199, 199, 0.5);
 }
-
+.admin-dashboard{
+    font-size: 5rem;
+    font-weight: 600;
+    text-shadow: 0px 0px 50px rgba(16, 108, 194, 0.5);
+}
+.counter{
+    font-size: 5rem;
+}
+.counter-label{
+    font-size: 2rem;
+}
 main{
     flex: 1 0 auto;
     height: 100vh;
@@ -66,6 +90,8 @@ footer{
     background-color: #3b3e48;
     flex: 0 0 auto;
     justify-content: center;
+    box-shadow: 0px 0px 10px 1px #3b3e48;
+    color: rgb(180, 177, 177);
 }
 footer a{
     color: inherit;

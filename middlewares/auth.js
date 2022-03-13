@@ -10,7 +10,7 @@ module.exports.createToken = (data) => {
     return jwt.sign(userData, process.env.ACCESS_TOKEN_SECRET, {expiresIn: `15m`})
 }
 
-// VERIFY USER WITH TOKEN - verify token
+// VERIFY USER WITH TOKEN - verify user token
 module.exports.verify = (req, res, next) => {
     const requestToken = req.headers.authorization
     if(requestToken){
@@ -27,8 +27,8 @@ module.exports.verify = (req, res, next) => {
 }
 
 //DECODE TOKEN - decode token
-module.exports.decode = (bearerToken) => {
-    return jwt.decode(bearerToken)
+module.exports.decode = (token) => {
+    return jwt.decode(token)
 }
 
 //VERIFY IF ADMIN METHOD - verify if admin
