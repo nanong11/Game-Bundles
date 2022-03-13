@@ -16,8 +16,9 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 
     <!-- External JS defered -->
-    <script src="./js/script.js"></script>
-
+    <script defer src="../js/script.js"></script>
+    <script defer src="../js/login.js"></script>
+    
     <!-- External CSS -->
     <link rel="stylesheet" href="../css/main.css">
 
@@ -31,14 +32,14 @@
             </nav>
         </div>
     </header>
+    
     <main>
-        
-        <form class="container form-container rounded py-5" action="" method="">
+        <form class="container form-container rounded py-5" method="POST"  id="loginForm">
             <h2 class="text-center">Login</h1>
             <div class="row flex-column align-items-center my-4">
                 <div class="form-group col-9">
                     <label for="email">Email address*</label>
-                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required autocomplete>
+                    <input type="email" class="form-control" name="email" id="email" required autocomplete>
                 </div>
                 <div class="form-group col-9">
                     <label for="password">Password*</label>
@@ -46,13 +47,11 @@
                 </div>
             </div>
             <div class="row justify-content-center text-center">
-                <button type="submit" class="btn btn-primary btn-signup w-25 col-8">SIGN UP</button>
+                <button type="submit" class="btn btn-primary btn-signup w-25 col-8">LOGIN</button>
                 <p class="col-8 mt-3 mb-0">Don't have an account?</p>
                 <span class="signup-btn col-8 mb-0"><a href="./register.html">Create a Game Bundles account</a></span>
             </div>
-            
         </form>
-        
     </main>
 
     <footer>

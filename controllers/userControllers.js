@@ -1,4 +1,5 @@
 const CryptoJS = require(`crypto-js`)
+const res = require("express/lib/response")
 const auth = require(`../middlewares/auth`)
 const User = require(`../models/User`)
 
@@ -19,7 +20,7 @@ module.exports.signUp = async (reqBody) => {
 module.exports.checkEmail = async (email) => {
     return await User.findOne({email}).then(result => result ? true : false)}
 
-//LOGIN - return a token or false
+//LOGIN - return a token or false or error
 module.exports.login = async (reqBody) => {
     return await User.findOne({email: reqBody.email}).then((result) => {
         if(result){
@@ -27,7 +28,7 @@ module.exports.login = async (reqBody) => {
             if(reqBody.password === decryptedPw){
                 return {token: auth.createToken(result)}
             }else{
-                return false
+                return error
             }
         }else{
             return false

@@ -30,7 +30,7 @@ router.post(`/check-email`, async (req, res) => {
     }
 })
 
-//LOGIN - receive and return a token or true or error
+//LOGIN - receive and return a token or false or error
 router.post(`/login`, async (req, res) => {
     try {
         await userController.login(req.body).then(result => res.send(result))
