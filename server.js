@@ -24,7 +24,9 @@ db.once(`open`, () => console.log(`Connected to Database..`));
 
 //for importing routes
 const userRoutes = require(`./routes/userRoutes`);
+const gameRoutes = require(`./routes/gameRoutes`);
 app.use(`/api/users`, userRoutes);
+app.use(`/api/games`, gameRoutes);
 
 //for heroku web view
 app.use(express.static(__dirname + "/client"));

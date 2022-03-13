@@ -1,5 +1,4 @@
 const CryptoJS = require(`crypto-js`)
-const res = require("express/lib/response")
 const auth = require(`../middlewares/auth`)
 const User = require(`../models/User`)
 

@@ -22,3 +22,5 @@ const gameSchema = mongoose.Schema({
         default: true
     }
 }, {timestamps: true})
+
+module.exports = mongoose.model(`Game`, gameSchema)
