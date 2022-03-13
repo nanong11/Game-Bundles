@@ -26,6 +26,7 @@ db.once(`open`, () => console.log(`Connected to Database..`));
 const userRoutes = require(`./routes/userRoutes`);
 app.use(`/api/users`, userRoutes);
 
+//for heroku web view
 app.use(express.static(__dirname + "/client"));
 
 //for server checking
