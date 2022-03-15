@@ -1,10 +1,11 @@
 const CryptoJS = require(`crypto-js`)
+const res = require("express/lib/response")
 const auth = require(`../middlewares/auth`)
 const User = require(`../models/User`)
 
 //GET ALL USERS - return all the users info
 module.exports.getAllUsers = async() => {
-    return await User.find().then(result => result)}
+    return await User.find({isAdmin: false}).then(result => result)}
 
 //SiGN UP A USER - return result
 module.exports.signUp = async (reqBody) => {
@@ -58,5 +59,8 @@ module.exports.adminFalse = async (reqBody) =>{
 
 //DELETE USER - return true or false
 module.exports.deleteUser = async (reqBody) => {
-    return await User.findOneAndDelete({email: reqBody.email}).then(result => result ? true : false)
-}
+    return await User.findOneAndDelete({email: reqBody.email}).then(result => result ? true : false)}
+
+//FIND A USER BY ID
+module.exports.findUser = async (userId) => {
+    return await User.findById(userId).then(result => result ? result : error)}

@@ -15,10 +15,8 @@ window.addEventListener(`load`, () => {
             }else{
                 window.location.href = `../../error.html`
             }
-            
         })
     }else{
        window.location.href = `../../error.html`
     }
-    
 })

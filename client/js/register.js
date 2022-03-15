@@ -15,7 +15,7 @@ signUpForm.addEventListener(`submit`, (e) => {
     const confirmPassword = document.querySelector(`#confirmPassword`).value
 
     if(password === confirmPassword){
-        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/check-email`, {
+        fetch(checkEmailRequest, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

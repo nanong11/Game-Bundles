@@ -96,4 +96,13 @@ router.delete(`/delete`, auth.verifyIfAdmin, async (req, res) => {
     }
 })
 
+//FIND USER BY ID
+router.get(`/:userId`, auth.verify, async (req, res) => {
+    try {
+        await userController.findUser(req.params.userId).then(result => res.send(result))
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router
