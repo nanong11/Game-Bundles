@@ -9,8 +9,8 @@ module.exports.getAllGames = async () => {
 
 // CREATE A GAME
 module.exports.createGame = async (reqBody) => {
-    const {name, description, price, stock} = reqBody
-    const newGame = new Game({name, description, price, stock})
+    const {gameName, description, price, stock} = reqBody
+    const newGame = new Game({gameName, description, price, stock})
     return await newGame.save()
     .then(result => result ? result : error)}
 

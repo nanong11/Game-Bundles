@@ -23,7 +23,6 @@ window.addEventListener(`load`, () => {
                 .then(result => {
                     if(result.isAdmin){
                         games.map(game => {
-                            console.log(game)
                             const cardContainer = document.querySelector(`.card-container`)
                             const card = document.createElement(`div`)
                             card.setAttribute(`class`, `card m-5 p-3`)
@@ -34,7 +33,7 @@ window.addEventListener(`load`, () => {
                             cardBody.setAttribute(`class`, `card-body text-center d-flex flex-column`)
                             const cardTitle = document.createElement(`h5`)
                             cardTitle.setAttribute(`class`, `card-title`)
-                            cardTitle.innerText = `${game.name}`
+                            cardTitle.innerText = `${game.gameName}`
                             const description = document.createElement(`p`)
                             description.setAttribute(`class`, `card-text`)
                             description.innerText = `${game.description}`
@@ -68,7 +67,7 @@ window.addEventListener(`load`, () => {
                             cardBody.setAttribute(`class`, `card-body text-center d-flex flex-column`)
                             const cardTitle = document.createElement(`h5`)
                             cardTitle.setAttribute(`class`, `card-title`)
-                            cardTitle.innerText = `${game.name}`
+                            cardTitle.innerText = `${game.gameName}`
                             const description = document.createElement(`p`)
                             description.setAttribute(`class`, `card-text`)
                             description.innerText = `${game.description}`
