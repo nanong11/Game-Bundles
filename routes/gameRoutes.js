@@ -4,7 +4,7 @@ const gameController = require(`../controllers/gameControllers`)
 const auth = require(`../middlewares/auth`)
 
 // GET ALL GAMES
-router.get(`/`, async (req, res) => {
+router.get(`/`, auth.verify, async (req, res) => {
     try {
         await gameController.getAllGames().then(result => res.send(result))
     } catch (error) {
@@ -13,7 +13,7 @@ router.get(`/`, async (req, res) => {
 })
 
 // CREATE A GAME
-router.post(`/create`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.createGame(req.body).then(result => res.send(result))
     } catch (error) {
@@ -31,7 +31,7 @@ router.post(`/:gameId`, async (req, res) => {
 })
 
 // UPDATE A GAME
-router.put(`/:gameId/update`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.put(`/:gameId/update`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.updateGame(req.params.gameId, req.body).then(result => res.send(result))
     } catch (error) {
@@ -40,7 +40,7 @@ router.put(`/:gameId/update`, /* auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // ARCHIVE A GAME
-router.patch(`/:gameId/archive`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:gameId/archive`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.archiveGame(req.params.gameId).then(result => res.send(result))
     } catch (error) {
@@ -49,7 +49,7 @@ router.patch(`/:gameId/archive`, /* auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // UNARCHIVE A GAME
-router.patch(`/:gameId/unArchive`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:gameId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.unArchiveGame(req.params.gameId).then(result => res.send(result))
     } catch (error) {
@@ -67,7 +67,7 @@ router.get(`/isActive`, async (req, res) => {
 })
 
 // DELETE COURSE
-router.delete(`/:gameId/delete`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.delete(`/:gameId/delete`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.deleteGame(req.params.gameId).then(result => res.send(result))
     } catch (error) {

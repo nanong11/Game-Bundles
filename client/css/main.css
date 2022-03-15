@@ -109,6 +109,23 @@ form{
 .fullName{
     font-size: 1.5rem;
 }
+.card{
+    background-color: #3b3e48;
+    box-shadow: 0px 0px 8px 1px rgba(143, 142, 142, 0.5);
+    width: 20rem;
+    border-radius: 15px;
+}
+.card img{
+    height: 15rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 1px #3b3e48;
+}
+.card .btn{
+    width: 8rem;
+}
+.card-title{
+    font-weight: 700;
+}
 footer{
     margin-top: auto;
     background-color: #3b3e48;
