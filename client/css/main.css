@@ -31,8 +31,15 @@ body{
 .navbar-brand{
     font-weight: 700;
 }
+.navbar-brand:hover{
+    color: rgb(57, 188, 240);
+}
 .navbar a{
     color: #fff;
+}
+.nav-link-list:hover{
+    background-color: rgb(57, 188, 240); 
+    border-radius: 10px;
 }
 
 .form-container{
