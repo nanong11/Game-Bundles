@@ -20,8 +20,7 @@ window.addEventListener(`load`, () => {
         })
         .then(result => result.json())
         .then(result => {
-            console.log(result)
-            
+
            const h1 = document.querySelector(`h1`)
            h1.innerText = `${result.firstName} ${result.lastName}`
 
@@ -42,6 +41,7 @@ window.addEventListener(`load`, () => {
                .then(result => {
                    if(result.isAdmin){
                        alert(`Set Admin successfully.`)
+                       return window.location.replace(`./admin-view-users.html`)
                    }else{
                        alert(`Cannot set Admin please try again.`)
                    }
@@ -60,6 +60,6 @@ window.addEventListener(`load`, () => {
         })
 
     }else{
-        window.location.href = `../../error.html`
+        return window.location.href = `../../error.html`
     }
 })

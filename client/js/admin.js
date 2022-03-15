@@ -13,10 +13,10 @@ window.addEventListener(`load`, () => {
                 const userCounter = document.querySelector(`#usersCounter`)
                 userCounter.innerText = result.length
             }else{
-                window.location.href = `../../error.html`
+                return window.location.href = `../../error.html`
             }
         })
     }else{
-       window.location.href = `../../error.html`
+        return window.location.href = `../../error.html`
     }
 })

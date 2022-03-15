@@ -46,11 +46,11 @@ window.addEventListener(`load`, () => {
                     tr.append(tdViewButton);
                 });
             }else{
-                window.location.href = `../../error.html`
+                return window.location.href = `../../error.html`
             }
         })  
     }else{
-        window.location.href = `../../error.html`
+        return window.location.href = `../../error.html`
     }
     
 })
