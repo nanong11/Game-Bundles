@@ -1,6 +1,11 @@
-//API REQUEST
+//API REQUEST HEROKU HOSTED
 const loginRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/login`
 const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
+
+//API REQUEST LOCAL HOSTED
+// const loginRequest = `http://localhost:3011/api/users/login`
+// const profile = `http://localhost:3011/api/users/profile`
+
 
 //FORM Element
 const loginForm = document.querySelector(`#loginForm`)
@@ -20,6 +25,7 @@ loginForm.addEventListener(`submit`, (e) => {
     })
     .then(result => result.json())
     .then(result => {
+        localStorage.setItem(`token`, result.token)
         const {token} = result //result is object with token property
         if(token != null){ 
             fetch(profile, {
@@ -29,12 +35,11 @@ loginForm.addEventListener(`submit`, (e) => {
             .then(result => result.json())
             .then(result => {
                 if(result.isAdmin){
-                    console.log(result.isAdmin)
                     alert(`Login Seccussful`)
-                    return window.location.href = "./sessions/admin/admin.html"
+                    return window.location.replace(`../pages/sessions/admin/admin.html`)
                 }else if(!result.isAdmin){
                     alert(`Login Seccussful`)
-                    return window.location.href = "./user/user.html"
+                    return window.location.replace("./user/user.html")
                 }else{
                     return alert(`Cannot login. Please try again.`)
                 }

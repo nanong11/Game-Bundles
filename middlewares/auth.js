@@ -44,6 +44,6 @@ module.exports.verifyIfAdmin = (req, res, next) => {
             }
         })
     }else{
-        return false
+        res.send(false)
     }
 }
