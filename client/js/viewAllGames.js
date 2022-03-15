@@ -42,7 +42,7 @@ window.addEventListener(`load`, () => {
                             const editBtn = document.createElement(`a`)
                             editBtn.innerText = `Edit Details`
                             editBtn.setAttribute(`class`, `btn btn-primary mb-3 mt-auto mx-auto`)
-                            editBtn.setAttribute(`href`, `#`)
+                            editBtn.setAttribute(`href`, `./admin-view-game.html?gameId=${game._id}`)
                             const archiveBtn = document.createElement(`a`)
                             archiveBtn.innerText = `Archive`
                             archiveBtn.setAttribute(`class`, `btn btn-primary mx-auto`)

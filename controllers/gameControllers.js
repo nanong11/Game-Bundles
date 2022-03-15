@@ -21,7 +21,7 @@ module.exports.findGame = async (gameId) => {
 
 //UPDATE A GAME
 module.exports.updateGame = async (gameId, reqBody) => {
-    const gameData = {name: reqBody.name, description: reqBody.description, price: reqBody.price, stock: reqBody.stock}
+    const gameData = {gameName: reqBody.gameName, description: reqBody.description, price: reqBody.price, stock: reqBody.stock}
     return await Game.findByIdAndUpdate(gameId, {$set: gameData}, {new:true})
     .then(result => result ? result : error)}
 
