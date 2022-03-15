@@ -12,6 +12,15 @@ router.get(`/`, auth.verifyIfAdmin, async (req, res) => {
     }
 })
 
+//GET ALL ADMIN
+router.get(`/admin`, auth.verifyIfAdmin, async (req, res) => {
+    try {
+        await userController.getAllAdmins().then(result => res.send(result))
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 //SIGN UP A USER - received and return result or error
 router.post(`/signup`, async (req, res) => {
     try {

@@ -30,6 +30,20 @@ window.addEventListener(`load`, () => {
                 return window.location.href = `../../error.html`
             }
         })
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/admin`, {
+            headers: {
+                "Authorization": token
+            }
+        })
+        .then(result => result.json())
+        .then(result => {
+            if(result){
+                const adminCounter = document.querySelector(`#adminCounter`)
+                adminCounter.innerText = result.length
+            }else{
+                return window.location.href = `../../error.html`
+            }
+        })
     }else{
         return window.location.href = `../../error.html`
     }

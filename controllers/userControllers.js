@@ -7,6 +7,10 @@ const User = require(`../models/User`)
 module.exports.getAllUsers = async() => {
     return await User.find({isAdmin: false}).then(result => result)}
 
+//GET ALL ADMINS - return all the users info
+module.exports.getAllAdmins = async() => {
+    return await User.find({isAdmin: true}).then(result => result)}
+
 //SiGN UP A USER - return result
 module.exports.signUp = async (reqBody) => {
     const {firstName, lastName, email, password} = reqBody
