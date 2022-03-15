@@ -4,9 +4,11 @@ const token = localStorage.getItem(`token`)
 
 //HEROKU HOSTED
 const findUserRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/${userId}`
+const setAsAdminRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/isAdmin`
 
 //LOCAL HOSTED
 // const findUserRequest = `http://localhost:3011/api/users/${userId}`
+// const setAsAdminRequest = `http://localhost:3011/api/users/isAdmin`
 
 window.addEventListener(`load`, () => {
     if(token){
@@ -28,7 +30,7 @@ window.addEventListener(`load`, () => {
 
            const setAdminBtn = document.querySelector(`.setAdmin`)
            setAdminBtn.addEventListener(`click`, ()=> {
-               fetch(`http://localhost:3011/api/users/isAdmin`, {
+               fetch(setAsAdminRequest, {
                    method: "PATCH",
                    headers: {
                        "Content-Type": "application/json",
