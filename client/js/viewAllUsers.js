@@ -1,7 +1,7 @@
 //HEROKU HOSTED
-// const getAllUsersRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users`
+const getAllUsersRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users`
 //LOCAL HOSTED
-const getAllUsersRequest = `http://localhost:3011/api/users`
+// const getAllUsersRequest = `http://localhost:3011/api/users`
 
 const token = localStorage.getItem(`token`)
 
