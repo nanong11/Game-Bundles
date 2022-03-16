@@ -62,11 +62,16 @@ body{
     background-color: rgb(57, 188, 240);
 }
 .delete-btn{
-    
     background-color: #cc5858;
 }
 .delete-btn:hover{
     background-color: #ca1414;
+}
+.archive-btn{
+    background-color: #a88308;
+}
+.archive-btn:hover{
+    background-color: #fcc40c;
 }
 .signup-btn a{
     font-size: 1.3rem;
