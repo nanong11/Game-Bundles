@@ -1,15 +1,3 @@
-const params = new URLSearchParams(document.location.search)
-const userId = params.get(`userId`)
-
-const token = localStorage.getItem(`token`)
-
-//HEROKU HOSTED
-const findUserRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/${userId}`
-
-//LOCAL HOSTED
-// const findUserRequest = `http://localhost:3011/api/users/${userId}`
-// const setAsAdminRequest = `http://localhost:3011/api/users/isAdmin`
-
 window.addEventListener(`load`, () => {
     if(token){
         fetch(findUserRequest, {
@@ -28,12 +16,12 @@ window.addEventListener(`load`, () => {
 
            const editProfileBtn = document.querySelector(`.editProfileBtn`)
            editProfileBtn.addEventListener(`click`, () => {
-               window.location.replace(`./editProfile.html?=${result._id}`)
+               window.location.replace(`./editProfile.html?userId=${result._id}`)
            })
 
            const changePasswordBtn = document.querySelector(`.changePasswordBtn`)
            changePasswordBtn.addEventListener(`click`, () => {
-               window.location.replace(`./changePassword.html?=${result._id}`)
+               window.location.replace(`./changePassword.html?userId=${result._id}`)
            })
         
         })

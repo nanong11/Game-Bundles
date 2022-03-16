@@ -1,5 +1,4 @@
 const CryptoJS = require(`crypto-js`)
-const res = require("express/lib/response")
 const auth = require(`../middlewares/auth`)
 const User = require(`../models/User`)
 
@@ -50,9 +49,17 @@ module.exports.update = async (userId, reqBody) => {
 
 //UPDATE PASSWORD OF A USER - return updated password in hash or error
 module.exports.updatePassword = async (userId, reqBody) => {
-    const newPassword = {password: CryptoJS.AES.encrypt(reqBody.password, process.env.ACCESS_TOKEN_SECRET).toString()}
-    return await User.findByIdAndUpdate(userId, {$set: newPassword}).then(result => result ? result : error)}
-
+    return await User.findById(userId).then(result => {
+        const decryptedOldPassword = CryptoJS.AES.decrypt(result.password, process.env.ACCESS_TOKEN_SECRET).toString(CryptoJS.enc.Utf8)
+        if(reqBody.oldPassword === decryptedOldPassword){
+            const newPassword = {password: CryptoJS.AES.encrypt(reqBody.newPassword, process.env.ACCESS_TOKEN_SECRET).toString()}
+            return User.findByIdAndUpdate(userId, {$set: newPassword}).then(result => result ? result : error)
+        }else{
+            return false
+        }
+    })
+}
+    
 //SET ISADMIN TO TRUE - return user info with isAdmin-true or false
 module.exports.adminTrue = async (reqBody) =>{
     return await User.findOneAndUpdate({email: reqBody.email}, {$set: {isAdmin: true}}, {new:true}).then(result => result ? result : false)}
