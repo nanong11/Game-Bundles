@@ -16,7 +16,7 @@ window.addEventListener(`load`, () => {
                 return window.location.href = `../../error.html`
             }
         })
-        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games`, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games/isActive`, {
             headers: {
                 "Authorization": token
             }
