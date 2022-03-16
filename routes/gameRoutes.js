@@ -66,7 +66,7 @@ router.get(`/isActive`, async (req, res) => {
     }
 })
 
-// DELETE COURSE
+// DELETE GAME
 router.delete(`/:gameId/delete`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await gameController.deleteGame(req.params.gameId).then(result => res.send(result))

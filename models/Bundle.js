@@ -1,7 +1,7 @@
 const mongoose = require(`mongoose`)
 
 const bundleSchema = mongoose.Schema({
-    name: {
+    bundleName: {
         type: String,
         required: [true, `Name is required.`],
     },
@@ -15,11 +15,12 @@ const bundleSchema = mongoose.Schema({
     },
     gamesIncluded: [
         {
-            productId: {
+            gameId: {
                 type: String,
+                ref: `Game`,
                 required: [true, `ProductId is required.`]
             },
-            name: {
+            gameName: {
                 type: String,
                 required: [true, `Name is required.`]
             },
@@ -31,6 +32,12 @@ const bundleSchema = mongoose.Schema({
     ],
     subTotal: {
         type: Number,
+        default: 0,
         required: [true, `Subtotal is required.`]
+    },
+    userId: {
+        type: String,
     }
 }, {timestamps: true})
+
+module.exports = mongoose.model(`Bundle`, bundleSchema)
