@@ -78,6 +78,9 @@ form{
     color: #4a4a4a;
     box-shadow: 0px 0px 16px 1px rgba(202, 199, 199, 0.5);
 }
+.editGameForm{
+    color: #ffffff;
+}
 .admin-dashboard{
     font-size: 5rem;
     font-weight: 600;
