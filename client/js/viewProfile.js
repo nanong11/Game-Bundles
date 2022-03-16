@@ -16,12 +16,12 @@ window.addEventListener(`load`, () => {
 
            const editProfileBtn = document.querySelector(`.editProfileBtn`)
            editProfileBtn.addEventListener(`click`, () => {
-               window.location.replace(`./editProfile.html?userId=${result._id}`)
+               window.location.href = (`./editProfile.html?userId=${result._id}`)
            })
 
            const changePasswordBtn = document.querySelector(`.changePasswordBtn`)
            changePasswordBtn.addEventListener(`click`, () => {
-               window.location.replace(`./changePassword.html?userId=${result._id}`)
+               window.location.href = (`./changePassword.html?userId=${result._id}`)
            })
         
         })
