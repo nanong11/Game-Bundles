@@ -30,7 +30,7 @@ window.addEventListener(`load`, () => {
                 return window.location.href = `../../error.html`
             }
         })
-        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/admin`, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/admins`, {
             headers: {
                 "Authorization": token
             }
