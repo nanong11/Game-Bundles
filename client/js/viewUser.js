@@ -40,7 +40,7 @@ window.addEventListener(`load`, () => {
                .then(result => result.json())
                .then(result => {
                    if(result.isAdmin){
-                       alert(`Set Admin successfully.`)
+                       alert(`${result.firstName} ${result.lastName} is now an admin.`)
                        return window.location.replace(`./admin-view-users.html`)
                    }else{
                        alert(`Cannot set Admin please try again.`)

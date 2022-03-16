@@ -13,7 +13,7 @@ router.get(`/`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 //GET ALL ADMIN
-router.get(`/admin`, auth.verifyIfAdmin, async (req, res) => {
+router.get(`/admins`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await userController.getAllAdmins().then(result => res.send(result))
     } catch (error) {
