@@ -26,9 +26,11 @@ db.once(`open`, () => console.log(`Connected to Database..`));
 const userRoutes = require(`./routes/userRoutes`);
 const gameRoutes = require(`./routes/gameRoutes`);
 const bundleRoutes = require(`./routes/bundleRoutes`);
+const orderRoutes = require(`./routes/orderRoutes`);
 app.use(`/api/users`, userRoutes);
 app.use(`/api/games`, gameRoutes);
 app.use(`/api/bundles`, bundleRoutes);
+app.use(`/api/orders`, orderRoutes);
 
 //for heroku web view
 app.use(express.static(__dirname + "/client"));

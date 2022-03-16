@@ -9,12 +9,24 @@ const orderSchema = mongoose.Schema({
         type: Date,
         default: new Date()
     },
-    status: {
-        type: String,
-        dafault: `Pending`
+    complete: {
+        type: Boolean,
+        default: false,
     },
+    bundlesIncluded: [
+        {
+            bundleId: {
+                type: String,
+            },
+            subTotal: {
+                type: Number
+            }
+            
+        }
+    ],
     total: {
-        type: Number
+        type: Number,
+        default: 0
     }
 }, {timestamps: true})
 
