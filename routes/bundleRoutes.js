@@ -14,7 +14,6 @@ router.get(`/`, auth.verify, async (req, res) => {
 
 // CREATE A BUNDLE
 router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
-    console.log(req.body)
     try {
         await bundleController.createBundle(req.body).then(result => res.send(result))
     } catch (error) {

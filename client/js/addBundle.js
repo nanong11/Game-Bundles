@@ -27,7 +27,6 @@ fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games`, {
             alert(`You can only add up to 5 games per bundle.`)
         }
     })
-    
     const removeGame = document.querySelector(`#removeGame`)
     removeGame.addEventListener(`click`, () => {
         const selectContainer = document.querySelector(`.selectContainer`)
