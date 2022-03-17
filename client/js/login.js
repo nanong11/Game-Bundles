@@ -1,4 +1,3 @@
-//API REQUEST HEROKU HOSTED
 const loginRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/login`
 const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
 
@@ -39,7 +38,7 @@ loginForm.addEventListener(`submit`, (e) => {
                     return window.location.replace(`../pages/sessions/admin/admin.html`)
                 }else if(!result.isAdmin){
                     alert(`Login Seccussful`)
-                    return window.location.replace("./user/user.html")
+                    return window.location.replace("../pages/sessions/user/user.html")
                 }else{
                     return alert(`Cannot login. Please try again.`)
                 }

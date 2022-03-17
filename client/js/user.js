@@ -18,6 +18,6 @@ profile.addEventListener(`click`, () => {
         })
 
     }else{
-        return window.location.href = `.././error.html`
+        return window.location.href = `../../error.html`
     }
 })

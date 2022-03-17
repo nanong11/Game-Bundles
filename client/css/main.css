@@ -152,6 +152,19 @@ form{
     color: #e3e3e3;
     border-radius: 10px;
 }
+.card-container-bundle{
+    background-color: #3b3e48;
+    box-shadow: 0px 0px 8px 1px rgba(143, 142, 142, 0.5);
+    border-radius: 10px;
+}
+.h2-container{
+    border-radius: 10px;
+    background-color: #1175a7;
+    box-shadow: 0px 0px 8px 1px #3b3e48;
+}
+.card-container-bundle img{
+    height: 10rem;
+}
 footer{
     margin-top: auto;
     background-color: #3b3e48;

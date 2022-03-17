@@ -1,8 +1,5 @@
-const addGameForm = document.querySelector(`.addGameForm`)
-const addGameRequest = `https://tranquil-caverns-53550.herokuapp.com/api/games/create`
-const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
-
 const token = localStorage.getItem(`token`)
+const addGameForm = document.querySelector(`.addGameForm`)
 
 addGameForm.addEventListener(`submit`, (e) => {
     (e).preventDefault()
@@ -12,7 +9,7 @@ addGameForm.addEventListener(`submit`, (e) => {
     const stock = document.querySelector(`#stock`).value
     
     if(token){
-        fetch(profile, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
             method: "GET",
             headers: {"Authorization": token}
 
@@ -20,7 +17,7 @@ addGameForm.addEventListener(`submit`, (e) => {
         .then(result => result.json())
         .then(result => {
             if(result.isAdmin){
-                fetch(addGameRequest, {
+                fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games/create`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -46,6 +43,4 @@ addGameForm.addEventListener(`submit`, (e) => {
     }else{
         return window.location.href = `../../error.html`
     }
-    
-
 })

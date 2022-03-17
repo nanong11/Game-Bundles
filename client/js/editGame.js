@@ -1,7 +1,5 @@
-const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
 let params = new URLSearchParams(document.location.search)
 const gameId = params.get(`gameId`)
-
 const token =localStorage.getItem(`token`)
 
 const gameName = document.querySelector(`#gameName`)
@@ -28,10 +26,9 @@ const editGameForm = document.querySelector(`.editGameForm`)
 editGameForm.addEventListener(`submit`, (e) => {
     e.preventDefault()
     if(token){
-        fetch(profile, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
             method: "GET",
             headers: {"Authorization": token}
-
         })
         .then(result => result.json())
         .then(result => {
@@ -68,5 +65,4 @@ editGameForm.addEventListener(`submit`, (e) => {
     }else{
         return window.location.href = `../../error.html`
     }
-    
 })

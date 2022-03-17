@@ -4,7 +4,7 @@ const bundleController = require(`../controllers/bundleControllers`)
 const auth = require(`../middlewares/auth`)
 
 // GET ALL BUNDLES
-router.get(`/`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.get(`/`, auth.verify, async (req, res) => {
     try {
         await bundleController.getAllBundles().then(result => res.send(result))
     } catch (error) {
@@ -13,7 +13,7 @@ router.get(`/`, /* auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // CREATE A BUNDLE
-router.post(`/create`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await bundleController.createBundle(req.body).then(result => res.send(result))
     } catch (error) {
@@ -31,7 +31,7 @@ router.post(`/:bundleId`, async (req, res) => {
 })
 
 // UPDATE A BUNDLE
-router.put(`/:bundleId/update`,/*  auth.verifyIfAdmin, */ async (req, res) => {
+router.put(`/:bundleId/update`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await bundleController.updateBundle(req.params.bundleId, req.body).then(result => res.send(result))
     } catch (error) {
@@ -40,7 +40,7 @@ router.put(`/:bundleId/update`,/*  auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // ARCHIVE A BUNDLE
-router.patch(`/:bundleId/archive`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:bundleId/archive`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await bundleController.archiveBundle(req.params.bundleId).then(result => res.send(result))
     } catch (error) {
@@ -49,7 +49,7 @@ router.patch(`/:bundleId/archive`, /* auth.verifyIfAdmin, */ async (req, res) =>
 })
 
 // UNARCHIVE A BUNDLE
-router.patch(`/:bundleId/unArchive`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:bundleId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await bundleController.unArchiveBundle(req.params.bundleId).then(result => res.send(result))
     } catch (error) {
@@ -67,7 +67,7 @@ router.get(`/isActive`, async (req, res) => {
 })
 
 // DELETE BUNDLE
-router.delete(`/:bundleId/delete`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.delete(`/:bundleId/delete`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await bundleController.deleteBundle(req.params.bundleId).then(result => res.send(result))
     } catch (error) {
