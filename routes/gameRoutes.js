@@ -22,7 +22,7 @@ router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND A GAME
-router.post(`/:gameId`, async (req, res) => {
+router.post(`/:gameId`, auth.verify, async (req, res) => {
     try {
         await gameController.findGame(req.params.gameId).then(result => res.send(result))
     } catch (error) {
@@ -58,7 +58,7 @@ router.patch(`/:gameId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND ALL ACTIVE GAMES
-router.get(`/isActive`, async (req, res) => {
+router.get(`/isActive`, auth.verify, async (req, res) => {
     try {
         await gameController.getAllActiveGames().then(result => res.send(result))
     } catch (error) {

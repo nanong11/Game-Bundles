@@ -10,7 +10,7 @@ const stock = document.querySelector(`#stock`)
 fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games/${gameId}`, {
     method: "POST",
     headers: {
-        "Authorization": token
+        "Authorization": `Bearer ${token}`
     }
 })
 .then(result => result.json())
@@ -28,7 +28,7 @@ editGameForm.addEventListener(`submit`, (e) => {
     if(token){
         fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
             method: "GET",
-            headers: {"Authorization": token}
+            headers: {"Authorization": `Bearer ${token}`}
         })
         .then(result => result.json())
         .then(result => {
@@ -43,7 +43,7 @@ editGameForm.addEventListener(`submit`, (e) => {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": token
+                        "Authorization": `Bearer ${token}`
                     },
                     body: JSON.stringify({
                         gameName, description, price, stock

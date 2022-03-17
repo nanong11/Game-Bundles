@@ -4,7 +4,7 @@ if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles`, {
         method: "GET",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())
@@ -13,7 +13,7 @@ if(token){
         if(token){
             fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
                 method: "GET",
-                headers: {"Authorization": token}
+                headers: {"Authorization": `Bearer ${token}`}
             })
             .then(result => result.json())
             .then(result => {
@@ -109,7 +109,7 @@ if(bundleId){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}/archive`, {
         method: "PATCH",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())

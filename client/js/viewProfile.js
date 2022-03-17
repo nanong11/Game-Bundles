@@ -1,8 +1,8 @@
 if(token){
-    fetch(findUserRequest, {
+    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/${userId}`, {
         method: "GET",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())

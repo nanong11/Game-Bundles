@@ -4,7 +4,7 @@ if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games`, {
         method: "GET",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())
@@ -13,7 +13,7 @@ if(token){
         if(token){
             fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
                 method: "GET",
-                headers: {"Authorization": token}
+                headers: {"Authorization": `Bearer ${token}`}
             })
             .then(result => result.json())
             .then(result => {
@@ -77,7 +77,7 @@ if(gameId){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games/${gameId}/unArchive`, {
         method: "PATCH",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())

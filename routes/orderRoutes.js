@@ -4,7 +4,7 @@ const orderController = require(`../controllers/orderControllers`)
 const auth = require(`../middlewares/auth`)
 
 // GET ALL ORDERS
-router.get(`/`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.get(`/`, auth.verify, async (req, res) => {
     try {
         await orderController.getAllOrders().then(result => res.send(result))
     } catch (error) {
@@ -13,7 +13,7 @@ router.get(`/`, /* auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // CREATE A ORDER
-router.post(`/create`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.post(`/create`, auth.verify, async (req, res) => {
     try {
         await orderController.createOrder(req.body).then(result => res.send(result))
     } catch (error) {
@@ -22,7 +22,7 @@ router.post(`/create`, /* auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // FIND A ORDER
-router.post(`/:orderId`, async (req, res) => {
+router.post(`/:orderId`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await orderController.findOrder(req.params.orderId).then(result => res.send(result))
     } catch (error) {
@@ -31,7 +31,7 @@ router.post(`/:orderId`, async (req, res) => {
 })
 
 // UPDATE A ORDER
-router.put(`/:orderId/update`,/*  auth.verifyIfAdmin, */ async (req, res) => {
+router.put(`/:orderId/update`, auth.verify, async (req, res) => {
     try {
         await orderController.updateOrder(req.params.orderId, req.body).then(result => res.send(result))
     } catch (error) {
@@ -40,7 +40,7 @@ router.put(`/:orderId/update`,/*  auth.verifyIfAdmin, */ async (req, res) => {
 })
 
 // COMPLETE A ORDER
-router.patch(`/:orderId/complete`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:orderId/complete`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await orderController.completeOrder(req.params.orderId).then(result => res.send(result))
     } catch (error) {
@@ -49,7 +49,7 @@ router.patch(`/:orderId/complete`, /* auth.verifyIfAdmin, */ async (req, res) =>
 })
 
 // PENDING A ORDER
-router.patch(`/:orderId/pending`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.patch(`/:orderId/pending`, auth.verifyIfAdmin, async (req, res) => {
     try {
         await orderController.pendingOrder(req.params.orderId).then(result => res.send(result))
     } catch (error) {
@@ -58,7 +58,7 @@ router.patch(`/:orderId/pending`, /* auth.verifyIfAdmin, */ async (req, res) => 
 })
 
 // FIND ALL COMPLETE ORDER
-router.get(`/isComplete`, async (req, res) => {
+router.get(`/isComplete`, auth.verify, async (req, res) => {
     try {
         await orderController.getAllCompleteOrders().then(result => res.send(result))
     } catch (error) {
@@ -67,7 +67,7 @@ router.get(`/isComplete`, async (req, res) => {
 })
 
 // DELETE ORDER
-router.delete(`/:orderId/delete`, /* auth.verifyIfAdmin, */ async (req, res) => {
+router.delete(`/:orderId/delete`, auth.verify, async (req, res) => {
     try {
         await orderController.deleteOrder(req.params.orderId).then(result => res.send(result))
     } catch (error) {

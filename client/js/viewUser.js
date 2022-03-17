@@ -6,7 +6,7 @@ if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/${userId}`, {
         method: "GET",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())
@@ -21,7 +21,7 @@ if(token){
                method: "PATCH",
                headers: {
                    "Content-Type": "application/json",
-                   "Authorization": token
+                   "Authorization": `Bearer ${token}`
                },
                body: JSON.stringify({email: result.email})
            })

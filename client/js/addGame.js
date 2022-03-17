@@ -10,7 +10,7 @@ addGameForm.addEventListener(`submit`, (e) => {
     
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games`, {
         method: "GET",
-        headers: {"Authorization": token}
+        headers: {"Authorization": `Bearer ${token}`}
     })
     .then(result => result.json())
     .then(result => {
@@ -19,8 +19,7 @@ addGameForm.addEventListener(`submit`, (e) => {
             if(token){
                 fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
                     method: "GET",
-                    headers: {"Authorization": token}
-        
+                    headers: {"Authorization": `Bearer ${token}`}
                 })
                 .then(result => result.json())
                 .then(result => {
@@ -29,7 +28,7 @@ addGameForm.addEventListener(`submit`, (e) => {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": token
+                                "Authorization": `Bearer ${token}`
                             },
                             body: JSON.stringify({
                                 gameName, description, price, stock

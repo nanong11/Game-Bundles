@@ -1,5 +1,3 @@
-const loginRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/login`
-const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
 const loginForm = document.querySelector(`#loginForm`)
 
 loginForm.addEventListener(`submit`, (e) => {
@@ -7,7 +5,7 @@ loginForm.addEventListener(`submit`, (e) => {
     const email = document.querySelector(`#email`).value
     const password = document.querySelector(`#password`).value
     
-    fetch(loginRequest, {
+    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -17,11 +15,11 @@ loginForm.addEventListener(`submit`, (e) => {
     .then(result => result.json())
     .then(result => {
         localStorage.setItem(`token`, result.token)
-        const {token} = result //result is object with token property
+        const {token} = result
         if(token != null){ 
-            fetch(profile, {
+            fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
                 method: "GET",
-                headers: {"Authorization": token}
+                headers: {"Authorization": `Bearer ${token}`}
             })
             .then(result => result.json())
             .then(result => {

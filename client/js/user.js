@@ -1,14 +1,12 @@
-const findUserRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
 const token = localStorage.getItem(`token`)
-
 const profile = document.querySelector(`#profile`)
 
 profile.addEventListener(`click`, () => {
     if(token){
-        fetch(findUserRequest, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
             method: "GET",
             headers: {
-                "Authorization": token
+                "Authorization": `Bearer ${token}`
             }
         })
         .then(result => result.json())
@@ -16,7 +14,6 @@ profile.addEventListener(`click`, () => {
             console.log(result)
             window.location.replace(`./profile.html?userId=${result._id}`)
         })
-
     }else{
         return window.location.href = `../../error.html`
     }

@@ -3,12 +3,11 @@ const bundleId = params.get(`bundleId`)
 
 const token = localStorage.getItem(`token`)
 
-
 if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}`, {
         method: "POST",
         headers: {
-            "Authorization": token
+            "Authorization": `Bearer ${token}`
         }
     })
     .then(result => result.json())
@@ -17,7 +16,7 @@ if(token){
         if(token){
             fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/profile`, {
                 method: "GET",
-                headers: {"Authorization": token}
+                headers: {"Authorization": `Bearer ${token}`}
             })
             .then(result => result.json())
             .then(result => {
@@ -83,7 +82,7 @@ if(token){
                             fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}/delete`, {
                                 method: "DELETE",
                                 headers: {
-                                    "Authorization": token
+                                    "Authorization": `Bearer ${token}`
                                 }
                             })
                             .then(result => result.json())
