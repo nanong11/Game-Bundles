@@ -28,7 +28,8 @@ module.exports.verify = (req, res, next) => {
 }
 
 //DECODE TOKEN - decode token
-module.exports.decode = (token) => {
+module.exports.decode = (bearerToken) => {
+    const token = bearerToken.slice(7)
     return jwt.decode(token)
 }
 
@@ -36,7 +37,7 @@ module.exports.decode = (token) => {
 module.exports.verifyIfAdmin = (req, res, next) => {
     const requestToken = req.headers.authorization
     const token = requestToken.slice(7)
-    const admin = jwt.decode(requestToken).isAdmin
+    const admin = jwt.decode(token).isAdmin
     if(token && admin === true){
         return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error) => {
             if(error){
