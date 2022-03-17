@@ -1,3 +1,6 @@
+const params = new URLSearchParams(document.location.search)
+const userId = params.get(`userId`)
+
 if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/${userId}`, {
         method: "GET",
