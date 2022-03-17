@@ -68,7 +68,12 @@ addGameForm.addEventListener(`submit`, (e) => {
             })
             .then(result => result.json())
             .then(result => {
-                console.log(result)
+                if(result){
+                    alert(`${result.bundleName} bundle is succssfully created`)
+                    window.location.replace(`./admin-view-bundles.html`)
+                }else{
+                    return window.location.href = `../../error.html`
+                }
             })            
     })
 })
