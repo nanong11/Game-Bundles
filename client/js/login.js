@@ -1,15 +1,7 @@
 const loginRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/login`
 const profile = `https://tranquil-caverns-53550.herokuapp.com/api/users/profile`
-
-//API REQUEST LOCAL HOSTED
-// const loginRequest = `http://localhost:3011/api/users/login`
-// const profile = `http://localhost:3011/api/users/profile`
-
-
-//FORM Element
 const loginForm = document.querySelector(`#loginForm`)
 
-//Login form onSubmit function
 loginForm.addEventListener(`submit`, (e) => {
     e.preventDefault()
     const email = document.querySelector(`#email`).value

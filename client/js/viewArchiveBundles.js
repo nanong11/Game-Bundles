@@ -18,12 +18,12 @@ if(token){
             .then(result => result.json())
             .then(result => {
                 if(result.isAdmin){
-                    const activeBundlesCount = bundles.filter(bundle => bundle.isActive === true).length
-                    if(activeBundlesCount > 0){
+                    const archiveBundlesCount = bundles.filter(bundle => bundle.isActive === false).length
+                    if(archiveBundlesCount > 0){
                         const bundleTitle = document.querySelector(`.bundle-title`)
-                        bundleTitle.innerText = `ACTIVE BUNDLES`
+                        bundleTitle.innerText = `ARCHIVE BUNDLES`
                         bundles.map(bundle => {
-                            if(bundle.isActive){
+                            if(bundle.isActive === false){
                                 let total = 0
                                 bundle.gamesIncluded.map(game => {
                                     return total += game.price
@@ -47,17 +47,16 @@ if(token){
                                 discountedPrice.innerText = `$${bundle.subTotal.toFixed(2)}`
                                 const dFlex = document.createElement(`div`)
                                 dFlex.setAttribute(`class`, `d-flex flex-column`)
-                                const editBtn = document.createElement(`a`)
-                                editBtn.setAttribute(`type`, `button`)
-                                editBtn.setAttribute(`class`, `btn btn-info mx-auto mt-3`)
-                                editBtn.setAttribute(`href`, `./admin-view-bundle.html?bundleId=${bundle._id}`)
-                                editBtn.innerText= `Edit Bundle`
-                                const archiveBtn = document.createElement(`a`)
-                                archiveBtn.setAttribute(`type`, `button`)
-                                archiveBtn.setAttribute(`class`, `btn btn-info mx-auto mt-3 archive-btn`)
-                                archiveBtn.setAttribute(`href`, `./admin-view-bundles.html?bundleId=${bundle._id}`)
-                                archiveBtn.innerText = `Archive`
-                                dFlex.append(editBtn, archiveBtn)
+                                const deleteBtn = document.createElement(`a`)
+                                const makeActiveBtn = document.createElement(`a`)
+                                makeActiveBtn.innerText = `Make Active`
+                                makeActiveBtn.setAttribute(`class`, `btn btn-primary mx-auto make-active-btn mb-3`)
+                                makeActiveBtn.setAttribute(`href`, `./admin-archive-bundle.html?bundleId=${bundle._id}`)
+                                deleteBtn.setAttribute(`type`, `button`)
+                                deleteBtn.setAttribute(`class`, `btn btn-info mx-auto delete-btn`)
+                                deleteBtn.setAttribute(`href`, `./admin-delete-bundle.html?bundleId=${bundle._id}`)
+                                deleteBtn.innerText = `Delete`
+                                dFlex.append(makeActiveBtn, deleteBtn)
                                 const gamesContainer = document.createElement(`div`)
                                 gamesContainer.setAttribute(`class`, `row text-center col-9`)
                                 const h2Container2 = document.createElement(`div`)
@@ -89,7 +88,7 @@ if(token){
                         })
                     }else{
                         const h1 = document.querySelector(`.admin-dashboard`)
-                        h1.innerText = `No More Active Bundles`
+                        h1.innerText = `No More Archive Bundles`
                     }
                 }else{
                     return window.location.href = `../../error.html`
@@ -106,7 +105,7 @@ if(token){
 let params = new URLSearchParams(document.location.search)
 const bundleId = params.get(`bundleId`)
 if(bundleId){
-    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}/archive`, {
+    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}/unArchive`, {
         method: "PATCH",
         headers: {
             "Authorization": token
@@ -114,7 +113,7 @@ if(bundleId){
     })
     .then(result => result.json())
     .then(result => {
-        alert(`${result.bundleName} is successfully added to archived bundles.`)
-        window.location.replace(`./admin-view-bundles.html`)
+        alert(`${result.bundleName} is successfully added to active bundles.`)
+        window.location.replace(`./admin-archive-bundle.html`)
     })
 }

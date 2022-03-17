@@ -1,6 +1,5 @@
 let params = new URLSearchParams(document.location.search)
 const userId = params.get(`userId`)
-// const token =localStorage.getItem(`token`) - token has been declared
 
 const firstName = document.querySelector(`#firstName`)
 const lastName = document.querySelector(`#lastName`)

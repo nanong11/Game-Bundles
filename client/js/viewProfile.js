@@ -1,4 +1,3 @@
-
 if(token){
     fetch(findUserRequest, {
         method: "GET",
