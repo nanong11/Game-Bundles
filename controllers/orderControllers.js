@@ -18,6 +18,7 @@ module.exports.createOrder = async (reqBody) => {
             let total = 0;
             result.map(bundles => {
                 total += bundles.subTotal
+                return total.toFixed(2)
             })
             const newOrder = new Order({userId, bundlesIncluded, total})
             return newOrder.save()
