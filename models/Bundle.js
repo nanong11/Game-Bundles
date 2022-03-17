@@ -15,7 +15,7 @@ const bundleSchema = mongoose.Schema({
     },
     gamesIncluded: [
         {
-            gameId: {
+            _id: {
                 type: String,
                 ref: `Game`,
                 required: [true, `ProductId is required.`]
@@ -30,6 +30,10 @@ const bundleSchema = mongoose.Schema({
             }
         }
     ],
+    discount: {
+        type: Number,
+        required: [true, `Discount is required.`]
+    },
     subTotal: {
         type: Number,
         default: 0,

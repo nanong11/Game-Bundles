@@ -75,4 +75,13 @@ router.delete(`/:gameId/delete`, auth.verifyIfAdmin, async (req, res) => {
     }
 })
 
+// GET ALL GAMES WITH NAME
+router.put(`/names`, /* auth.verifyIfAdmin, */ async (req, res) => {
+    try {
+        await gameController.getAllGamesByName(req.body.gameName).then(result => res.send(result))
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router

@@ -44,3 +44,8 @@ module.exports.getAllActiveGames = async () => {
 module.exports.deleteGame = async (gameId) => {
     return await Game.findByIdAndDelete(gameId)
     .then(result => result ? result : error)}
+
+// GET ALL GAMES BY NAME
+module.exports.getAllGamesByName = async (reqBody) => {
+    return await Game.find({gameName: {$in: reqBody}})
+    .then(result => result ? result : error)}

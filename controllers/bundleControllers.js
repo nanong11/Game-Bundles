@@ -7,29 +7,17 @@ module.exports.getAllBundles = async () => {
     return await Bundle.find()
     .then(result => result ? result : error)}
 
-// CREATE A GAME
+// CREATE A BUNDLE
 module.exports.createBundle = async (reqBody) => {
-    const {bundleName, description, gamesIncluded} = reqBody
+    const {bundleName, description, gamesIncluded, discount} = reqBody
     let subTotal = 0;
-    if(gamesIncluded.length == 2){
-        gamesIncluded.map(game => {
-            return subTotal += game.price
-        })
-        subTotal -= (subTotal * 0.05)
-    }else if(gamesIncluded.length == 3){
-        gamesIncluded.map(game => {
-            return subTotal += game.price
-        })
-        subTotal -= (subTotal * 0.10)
-    }else if(gamesIncluded.length == 5){
-        gamesIncluded.map(game => {
-            return subTotal += game.price
-        })
-        subTotal -= (subTotal * 0.15)
-    }else{
-        return false
-    }
-    const newBundle = new Bundle({bundleName, description, gamesIncluded, subTotal})
+    
+    gamesIncluded.map(game => {
+        return subTotal += game.price
+    })
+    subTotal -= (subTotal * discount)
+    
+    const newBundle = new Bundle({bundleName, description, gamesIncluded, discount, subTotal})
     return await newBundle.save()
     .then(result => result ? result : error)}
 

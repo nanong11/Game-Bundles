@@ -14,6 +14,7 @@ router.get(`/`, auth.verify, async (req, res) => {
 
 // CREATE A BUNDLE
 router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
+    console.log(req.body)
     try {
         await bundleController.createBundle(req.body).then(result => res.send(result))
     } catch (error) {
@@ -22,7 +23,7 @@ router.post(`/create`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND A BUNDLE
-router.post(`/:bundleId`, async (req, res) => {
+router.post(`/:bundleId`, auth.verify, async (req, res) => {
     try {
         await bundleController.findBundle(req.params.bundleId).then(result => res.send(result))
     } catch (error) {
@@ -58,7 +59,7 @@ router.patch(`/:bundleId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND ALL ACTIVE BUNDLE
-router.get(`/isActive`, async (req, res) => {
+router.get(`/isActive`, auth.verify, async (req, res) => {
     try {
         await bundleController.getAllActiveBundles().then(result => res.send(result))
     } catch (error) {

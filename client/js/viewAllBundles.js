@@ -26,28 +26,16 @@ if(token){
                                 bundle.gamesIncluded.map(game => {
                                     return total += game.price
                                 })
-                                let discount = 0
-                                switch (bundle.gamesIncluded.length) {
-                                    case 2:
-                                        discount = 5
-                                        break;
-                                    case 3:
-                                        discount = 10
-                                        break;
-                                    case 5:
-                                        discount = 15
-                                    default:
-                                        break;
-                                }
+                                
                                 const mainContainer = document.querySelector(`.main-container`)
                                 const cardContainerBundle = document.createElement(`div`)
                                 cardContainerBundle.setAttribute(`class`, `row mx-auto my-5 py-5 justify-content-center align-middle card-container-bundle`)
                                 const h2Container = document.createElement(`div`)
                                 h2Container.setAttribute(`class`, `text-center pt-5 col-3 h2-container py-3`)
                                 const h2 = document.createElement(`h2`)
-                                h2.innerText = `${bundle.gamesIncluded.length} GB`
+                                h2.innerText = `${bundle.bundleName}`
                                 const discription = document.createElement(`p`)
-                                discription.innerText = `Two Games Bundle with ${discount}% less.`
+                                discription.innerText = `${bundle.description}`
                                 const totalPrice = document.createElement(`s`)
                                 totalPrice.innerText = `$${total}`
                                 const totalPriceP = document.createElement(`p`)

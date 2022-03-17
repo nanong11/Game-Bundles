@@ -4,6 +4,7 @@ const gameSchema = mongoose.Schema({
     gameName: {
         type: String,
         required: [true, `Name is required.`],
+        unique: [true, `The Game Name must be unique.`]
     },
     description: {
         type: String,
