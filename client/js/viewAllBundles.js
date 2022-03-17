@@ -37,12 +37,12 @@ if(token){
                                 const discription = document.createElement(`p`)
                                 discription.innerText = `${bundle.description}`
                                 const totalPrice = document.createElement(`s`)
-                                totalPrice.innerText = `$${total}`
+                                totalPrice.innerText = `$${total.toFixed(2)}`
                                 const totalPriceP = document.createElement(`p`)
                                 totalPriceP.setAttribute(`class`, `mt-5`)
                                 totalPriceP.append(totalPrice)
                                 const discountedPrice = document.createElement(`p`)
-                                discountedPrice.innerText = `$${bundle.subTotal}`
+                                discountedPrice.innerText = `$${bundle.subTotal.toFixed(2)}`
                                 const dFlex = document.createElement(`div`)
                                 dFlex.setAttribute(`class`, `d-flex flex-column`)
                                 const editBtn = document.createElement(`a`)
@@ -73,7 +73,7 @@ if(token){
                                     const h3 = document.createElement(`h3`)
                                     h3.innerText = `${game.gameName}`
                                     const price = document.createElement(`p`)
-                                    price.innerText = `${game.price}`
+                                    price.innerText = `$${game.price.toFixed(2)}`
                                     gameContainer.append(img, h3, price)
                                     gamesContainer.append(gameContainer)
                                 })

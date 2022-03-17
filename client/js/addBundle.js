@@ -1,6 +1,6 @@
 const token = localStorage.getItem(`token`)
 
-fetch(`http://localhost:3011/api/games`, {
+fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games`, {
     method: "GET",
     headers: {
         "Authorization": token
@@ -46,7 +46,7 @@ addGameForm.addEventListener(`submit`, (e) => {
     const gamesIncludedArr = [...gamesIncludedData].map(games => games.value)
     let gameName = gamesIncludedArr.map(games => games)
     
-    fetch(`http://localhost:3011/api/games/names`, {
+    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/games/names`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ addGameForm.addEventListener(`submit`, (e) => {
     .then(result => result.json())
     .then(result => {
             const gamesIncluded = result.filter(game => game.isActive)
-            fetch(`http://localhost:3011/api/bundles/create`, {
+            fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/create`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
