@@ -20,7 +20,7 @@ if(token){
        })
        const changePasswordBtn = document.querySelector(`.changePasswordBtn`)
        changePasswordBtn.addEventListener(`click`, () => {
-           window.location.href = (`./changePassword.html?userId=${result._id}`)
+           window.location.href = (`./admin-change-password.html?userId=${result._id}`)
        })
     })
 }else{

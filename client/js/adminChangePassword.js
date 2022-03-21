@@ -6,6 +6,7 @@ const changePasswordForm = document.querySelector(`#changePasswordForm`)
 changePasswordForm.addEventListener(`submit`, (e) => {
     e.preventDefault()
     if(token){
+
         const oldPassword = document.querySelector(`#oldPassword`).value
         const newPassword = document.querySelector(`#newPassword`).value
         const confirmNewPassword = document.querySelector(`#confirmNewPassword`).value
@@ -34,7 +35,7 @@ changePasswordForm.addEventListener(`submit`, (e) => {
                     .then(result => {
                         if(result){
                             alert(`Password successfully changed.`)
-                            return window.location.replace(`./profile.html?userId=${userId}`)
+                            return window.location.replace(`./admin-profile.html?userId=${userId}`)
                         }else if(result == false){
                             alert(`Please input correct old password.`)
                             changePasswordForm.reset()
@@ -56,5 +57,5 @@ changePasswordForm.addEventListener(`submit`, (e) => {
 
 const goBack = document.querySelector(`#go-back`)
 goBack.addEventListener(`click`, () => {
-    window.location.href = `./profile.html?userId=${userId}`
+    window.location.href = `./admin-profile.html?userId=${userId}`
 })
