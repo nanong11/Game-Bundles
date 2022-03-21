@@ -28,7 +28,7 @@ module.exports.findBundle = async (bundleId) => {
 
 //UPDATE A BUNDLE
 module.exports.updateBundle = async (bundleId, reqBody) => {
-    const bundleData = {bundleName: reqBody.bundleName, description: reqBody.description, price: reqBody.price, gamesIncluded: reqBody.gamesIncluded}
+    const bundleData = {bundleName: reqBody.bundleName, description: reqBody.description, price: reqBody.price, gamesIncluded: reqBody.gamesIncluded, discount: reqBody.discount}
     return await Bundle.findByIdAndUpdate(bundleId, {$set: bundleData}, {new:true})
     .then(result => result ? result : error)}
 
