@@ -22,6 +22,10 @@ if(token){
        changePasswordBtn.addEventListener(`click`, () => {
            window.location.href = (`./admin-change-password.html?userId=${result._id}`)
        })
+       const deleteAccountBtn = document.querySelector(`#delete-account`)
+       deleteAccountBtn.addEventListener(`click`, () => {
+           window.location.href = (`./admin-delete-account.html?userId=${result._id}`)
+       })
     })
 }else{
     window.location.href = `../../error.html`

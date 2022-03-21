@@ -61,10 +61,10 @@ body{
 .btn:hover{
     background-color: rgb(57, 188, 240);
 }
-.delete-btn{
+.delete-btn, #delete-account{
     background-color: #cc5858;
 }
-.delete-btn:hover{
+.delete-btn:hover, #delete-account:hover{
     background-color: #ca1414;
 }
 .archive-btn{
