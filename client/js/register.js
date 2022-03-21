@@ -1,5 +1,3 @@
-const checkEmailRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/check-email`
-const signUpRequest = `https://tranquil-caverns-53550.herokuapp.com/api/users/signup`
 const signUpForm = document.querySelector(`#signUpForm`)
 
 signUpForm.addEventListener(`submit`, (e) => {
@@ -11,7 +9,7 @@ signUpForm.addEventListener(`submit`, (e) => {
     const confirmPassword = document.querySelector(`#confirmPassword`).value
 
     if(password === confirmPassword){
-        fetch(checkEmailRequest, {
+        fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/check-email`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,7 +21,7 @@ signUpForm.addEventListener(`submit`, (e) => {
             if(result){
                 alert(`Email is already in use.`)
             }else if(result === false){
-                fetch(signUpRequest, {
+                fetch(`https://tranquil-caverns-53550.herokuapp.com/api/users/signup`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

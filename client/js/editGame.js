@@ -1,6 +1,5 @@
 let params = new URLSearchParams(document.location.search)
 const gameId = params.get(`gameId`)
-const token =localStorage.getItem(`token`)
 
 const gameName = document.querySelector(`#gameName`)
 const description = document.querySelector(`#description`)

@@ -1,4 +1,3 @@
-const token = localStorage.getItem(`token`)
 const addGameForm = document.querySelector(`.addGameForm`)
 
 addGameForm.addEventListener(`submit`, (e) => {

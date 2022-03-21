@@ -1,8 +1,6 @@
 let params = new URLSearchParams(document.location.search)
 const bundleId = params.get(`bundleId`)
 
-const token = localStorage.getItem(`token`)
-
 if(token){
     fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/${bundleId}`, {
         method: "POST",

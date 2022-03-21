@@ -61,11 +61,12 @@ editProfileForm.addEventListener(`submit`, (e) => {
                         .then(result => {
                             if(result){
                                 alert(`${result.firstName} ${result.lastName} account was successfully edited.`)
-                                window.location.replace(`./profile.html?userId=${userId}`)
+                                window.location.replace(`./admin-profile.html?userId=${userId}`)
                             }else{
                                 return window.location.href = `../../error.html`
                             }
-                        })
+                        })                        
+
                     }
                 })
             }else{
@@ -79,5 +80,5 @@ editProfileForm.addEventListener(`submit`, (e) => {
 
 const goBack = document.querySelector(`#go-back`)
 goBack.addEventListener(`click`, () => {
-    window.location.href = `./profile.html?userId=${userId}`
+    window.location.href = `./admin-profile.html?userId=${userId}`
 })

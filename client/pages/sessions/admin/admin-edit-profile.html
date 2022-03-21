@@ -18,8 +18,9 @@
     <!-- External JS defered -->
     <script defer src="../../../js/script.js"></script>
     <script defer src="../../../js/logout.js"></script>
-    <script defer src="../../../js/viewAdmin.js"></script>
+    <script defer src="../../../js/editAdminProfile.js"></script>
     <script defer src="../../../js/admin-view-profile.js"></script>
+    
 
     <!-- External CSS -->
     <link rel="stylesheet" href="../../../css/main.css">
@@ -46,21 +47,38 @@
                     </li>
                   </ul>
                   <span class="nav-item nav-link-list"><a class="nav-link" href="#" id="admin-profile">Admin</a></span>
-                  <span class="nav-item nav-link-list"><a class="nav-link" href="../../../index.html" id="logout">Logout</a></span>
+                  <span class="nav-item nav-link-list"><a class="nav-link" href="../../.././index.html" id="logout">Logout</a></span>
                 </div>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="container px-5 main-container justify-content-center text-center">
-            <div class="align-items-center">
-              <a class="nav-link back mt-5" href="./admin-view-admins.html">Back to Admin lists</a>
-            </div>
-            <h1 class="text-center admin-dashboard my-5"></h1>
-            <p class="text-center"></p>
-            <h5 class="text-center"></h5>
-            <button type="button" class="btn mt-5 removeAdmin">Remove as Admin</button>
+        <div class="container px-5 main-container mb-5">
+            <div class="text-center mt-5">
+                <a class="nav-link back" href="#" id="go-back">Go back</a>
+              </div>
+              <form class="container form-container rounded pt-5 pb-4" id="editProfileForm">
+                  
+                  <h2 class="text-center">Update Profile</h1>
+                  <div class="row flex-column align-items-center mt-4">
+                      <div class="form-group col-9">
+                          <label for="firstName">First Name*</label>
+                          <input type="text" class="form-control" name="firstName" id="firstName" required autocomplete>
+                      </div>
+                      <div class="form-group col-9">
+                          <label for="lastName">Last Name*</label>
+                          <input type="text" class="form-control" name="lastName" id="lastName" required autocomplete>
+                      </div>
+                      <div class="form-group col-9">
+                          <label for="email">Email address*</label>
+                          <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" required autocomplete>
+                      </div>
+                  </div>
+                  <div class="row justify-content-center text-center mb-1">
+                      <button type="submit" class="btn btn-primary mt-3 mx-auto">Save</button>
+                  </div>
+              </form>           
         </div>
     </main>
 
