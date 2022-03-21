@@ -44,6 +44,7 @@ changePasswordForm.addEventListener(`submit`, (e) => {
                     })
                 }else{
                     alert(`Please confirm new password`)
+                    changePasswordForm.reset()
                 }
             }else{
                 return window.location.href = `.././error.html`
