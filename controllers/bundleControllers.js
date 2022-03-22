@@ -11,12 +11,10 @@ module.exports.getAllBundles = async () => {
 module.exports.createBundle = async (reqBody) => {
     const {bundleName, description, gamesIncluded, discount} = reqBody
     let subTotal = 0;
-    
     gamesIncluded.map(game => {
         return subTotal += game.price
     })
     subTotal -= (subTotal * discount)
-    
     const newBundle = new Bundle({bundleName, description, gamesIncluded, discount, subTotal})
     return await newBundle.save()
     .then(result => result ? result : error)}
@@ -28,7 +26,13 @@ module.exports.findBundle = async (bundleId) => {
 
 //UPDATE A BUNDLE
 module.exports.updateBundle = async (bundleId, reqBody) => {
-    const bundleData = {bundleName: reqBody.bundleName, description: reqBody.description, price: reqBody.price, gamesIncluded: reqBody.gamesIncluded, discount: reqBody.discount}
+    const {bundleName, description, gamesIncluded, discount} = reqBody
+    let subTotal = 0;
+    gamesIncluded.map(game => {
+        return subTotal += game.price
+    })
+    subTotal -= (subTotal * discount)
+    const bundleData = {bundleName, description, gamesIncluded, discount, subTotal}
     return await Bundle.findByIdAndUpdate(bundleId, {$set: bundleData}, {new:true})
     .then(result => result ? result : error)}
 
