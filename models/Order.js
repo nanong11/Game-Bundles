@@ -13,15 +13,18 @@ const orderSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    gamesIncluded: [
+        {
+            gameId: {
+                type: String
+            },
+        }
+    ],
     bundlesIncluded: [
         {
             bundleId: {
                 type: String,
             },
-            subTotal: {
-                type: Number
-            }
-            
         }
     ],
     total: {

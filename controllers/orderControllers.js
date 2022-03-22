@@ -2,6 +2,7 @@ const CryptoJS = require(`crypto-js`)
 const auth = require(`../middlewares/auth`)
 const Order = require(`../models/Order`)
 const Bundle = require(`../models/Bundle`)
+const Game = require(`../models/Game`)
 
 // GET ALL ORDERS
 module.exports.getAllOrders = async () => {
@@ -10,23 +11,34 @@ module.exports.getAllOrders = async () => {
 
 // CREATE A ORDER
 module.exports.createOrder = async (reqBody) => {
-    const {userId, bundlesIncluded} = reqBody
+    const {userId, bundlesIncluded, gamesIncluded} = reqBody
     const bundleIds = bundlesIncluded.map(bundle => bundle.bundleId)
-
-    return await Bundle.find({id: {$in: bundleIds} }).then(result => {
+    const gameIds = gamesIncluded.map(game => game.gameId)
+    let total = 0;
+    await Bundle.find({ _id: {$in: bundleIds} }).then(result => {
         if(result){
-            let total = 0;
             result.map(bundles => {
                 total += bundles.subTotal
-                return total.toFixed(2)
+                return total
             })
-            const newOrder = new Order({userId, bundlesIncluded, total})
-            return newOrder.save()
-            .then(result => result ? result : error)
         }else{
-            return false
+            return total
         }
     })
+    await Game.find({ _id: {$in: gameIds} }).then(result => {
+        if(result){
+            result.map(games => {
+                total += games.price
+                return total
+            })
+        }else{
+            return total
+        }
+    })
+    total = +total.toFixed(2)
+    const newOrder = new Order({userId, bundlesIncluded, gamesIncluded, total})
+    return newOrder.save()
+    .then(result => result ? result : error)
 }
 
 //FIND AN ORDER
@@ -34,10 +46,10 @@ module.exports.findOrder = async (orderId) => {
     return await Order.findById(orderId)
     .then(result => result ? result : error)}
 
-//UPDATE AN ORDER
-module.exports.updateOrder = async (orderId, reqBody) => {
-    const orderData = {bundlesIncluded: reqBody.bundlesIncluded}
-    return await Order.findByIdAndUpdate(orderId, {$set: orderData}, {new:true})
+// ADD PRODUCTS TO ORDER
+module.exports.addProductsToOrder = async (orderId, reqBody) => {
+    const orderData = {bundlesIncluded: reqBody.bundlesIncluded, gamesIncluded: reqBody.gamesIncluded}
+    return await Order.findByIdAndUpdate(orderId, {$push: orderData}, {new:true})
     .then(result => result ? result : error)}
 
 //COMPLETE A ORDER

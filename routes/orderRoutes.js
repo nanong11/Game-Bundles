@@ -30,10 +30,10 @@ router.post(`/:orderId`, auth.verifyIfAdmin, async (req, res) => {
     }
 })
 
-// UPDATE A ORDER
-router.put(`/:orderId/update`, auth.verify, async (req, res) => {
+// ADD PRODUCTS TO ORDER
+router.put(`/:orderId/adToCart`, auth.verify, async (req, res) => {
     try {
-        await orderController.updateOrder(req.params.orderId, req.body).then(result => res.send(result))
+        await orderController.addProductsToOrder(req.params.orderId, req.body).then(result => res.send(result))
     } catch (error) {
         res.status(500).json(error)
     }
