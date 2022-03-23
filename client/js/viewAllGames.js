@@ -18,7 +18,7 @@ if(token){
             })
             .then(result => result.json())
             .then(result => {
-                user = result
+                const user = result
                 if(user.isAdmin){
                     const activeGamesCount = games.filter(game => game.isActive === true).length
                     if(activeGamesCount > 0){
