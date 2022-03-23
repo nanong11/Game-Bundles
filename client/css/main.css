@@ -169,6 +169,23 @@ form{
 .card-container-bundle img{
     height: 10rem;
 }
+.item-picture{
+    width: 3rem;
+}
+.cart-item-container{
+    border: 1px solid #1175a7;
+}
+.cart-item-container:hover{
+    background-color: #1175a7;
+}
+#cart-item-remove-btn{
+    margin: auto 0 auto 1rem;
+    width: 2rem;
+    height: 1.5rem;
+    padding-top: 0;
+    padding-left: 10px;
+    font-weight: 900;
+}
 footer{
     margin-top: auto;
     background-color: #3b3e48;

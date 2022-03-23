@@ -52,6 +52,13 @@ module.exports.addProductsToOrder = async (orderId, reqBody) => {
     return await Order.findByIdAndUpdate(orderId, {$push: orderData}, {new:true})
     .then(result => result ? result : error)}
 
+// REMOVE PRODUCTS FROM ORDER
+module.exports.removeFromCart = async (orderId, reqBody) => {
+    console.log(reqBody.bundlesIncluded)
+    const orderData = {bundlesIncluded: reqBody.bundlesIncluded, gamesIncluded: reqBody.gamesIncluded}
+    return await Order.findByIdAndUpdate(orderId, {$pull: orderData}, {new:true})
+    .then(result => result ? result : error)}
+
 //COMPLETE A ORDER
 module.exports.completeOrder = async (orderId) => {
     return await Order.findByIdAndUpdate(orderId, {$set: {complete: true}}, {new:true})

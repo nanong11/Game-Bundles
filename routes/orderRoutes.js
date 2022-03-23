@@ -39,6 +39,15 @@ router.put(`/:orderId/adToCart`, auth.verify, async (req, res) => {
     }
 })
 
+// REMOVE PRODUCTS TO ORDER
+router.put(`/:orderId/removeFromCart`, auth.verify, async (req, res) => {
+    try {
+        await orderController.removeFromCart(req.params.orderId, req.body).then(result => res.send(result))
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 // COMPLETE A ORDER
 router.patch(`/:orderId/complete`, auth.verifyIfAdmin, async (req, res) => {
     try {
