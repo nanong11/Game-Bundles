@@ -186,6 +186,13 @@ form{
     padding-left: 10px;
     font-weight: 900;
 }
+.carousel-item img{
+   height: 35rem;
+   border-radius: 5px;
+}
+.carousel-indicators li{
+    background-color: #1175a7;
+}
 footer{
     margin-top: auto;
     background-color: #3b3e48;
