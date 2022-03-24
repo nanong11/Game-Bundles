@@ -58,7 +58,7 @@ router.patch(`/:bundleId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND ALL ACTIVE BUNDLE
-router.get(`/isActive`, auth.verify, async (req, res) => {
+router.get(`/isActive`, async (req, res) => {
     try {
         await bundleController.getAllActiveBundles().then(result => res.send(result))
     } catch (error) {

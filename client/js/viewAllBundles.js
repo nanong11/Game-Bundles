@@ -256,8 +256,78 @@ if(token){
         }
     })
 }else{
-    window.location.href = `../../error.html`
+    fetch(`https://tranquil-caverns-53550.herokuapp.com/api/bundles/isActive`)
+    .then(result => result.json())
+    .then(result => {
+        const activeBundles = result
+        if(activeBundles.length > 0){
+            const bundleTitle = document.querySelector(`.bundle-title`)
+            bundleTitle.innerText = `CHOOSE YOUR BUNDLES`
+            activeBundles.map(bundle => {
+                let total = 0
+                bundle.gamesIncluded.map(game => {
+                    return total += game.price
+                })
+                
+                const mainContainer = document.querySelector(`.main-container`)
+                const cardContainerBundle = document.createElement(`div`)
+                cardContainerBundle.setAttribute(`class`, `row mx-auto my-5 py-5 justify-content-center align-middle card-container-bundle`)
+                const h2Container = document.createElement(`div`)
+                h2Container.setAttribute(`class`, `text-center pt-5 col-3 h2-container py-3`)
+                const h2 = document.createElement(`h2`)
+                h2.innerText = `${bundle.bundleName}`
+                const discription = document.createElement(`p`)
+                discription.innerText = `${bundle.description}`
+                const totalPrice = document.createElement(`s`)
+                totalPrice.innerText = `$${total.toFixed(2)}`
+                const totalPriceP = document.createElement(`p`)
+                totalPriceP.setAttribute(`class`, `mt-5`)
+                totalPriceP.append(totalPrice)
+                const discountedPrice = document.createElement(`p`)
+                discountedPrice.innerText = `$${bundle.subTotal.toFixed(2)}`
+                const dFlex = document.createElement(`div`)
+                dFlex.setAttribute(`class`, `d-flex flex-column`)
+                const addToCartBtn = document.createElement(`a`)
+                addToCartBtn.setAttribute(`type`, `button`)
+                addToCartBtn.setAttribute(`class`, `btn btn-info mx-auto mt-3`)
+                addToCartBtn.innerText= `Add to cart`
+                
+                dFlex.append(addToCartBtn)
+                const gamesContainer = document.createElement(`div`)
+                gamesContainer.setAttribute(`class`, `row text-center col-9`)
+                const h2Container2 = document.createElement(`div`)
+                h2Container2.setAttribute(`class`, `col-12 mb-5`)
+                const h2Title = document.createElement(`h2`)
+                h2Title.innerText = `Games Included`
+                h2Container2.append(h2Title)
+                gamesContainer.append(h2Container2)
+                bundle.gamesIncluded.map(game => {
+                    const gameContainer = document.createElement(`div`)
+                    gameContainer.setAttribute(`class`, `col`)
+                    const img = document.createElement(`img`)
+                    img.setAttribute(`class`, `img-fluid`)
+                    img.setAttribute(`src`, `../assets/img/the-witcher-3.jpg`)
+                    const h3 = document.createElement(`h3`)
+                    h3.innerText = `${game.gameName}`
+                    h3.setAttribute(`class`, `mt-3`)
+                    const price = document.createElement(`p`)
+                    price.innerText = `$${game.price.toFixed(2)}`
+                    price.setAttribute(`class`, `mt-3`)
+                    gameContainer.append(img, h3, price)
+                    gamesContainer.append(gameContainer)
+                })
+                
+                mainContainer.append(cardContainerBundle)
+                cardContainerBundle.append(h2Container, gamesContainer)
+                h2Container.append(h2, discription, totalPriceP, discountedPrice, dFlex)
+
+                addToCartBtn.addEventListener(`click`, () => {
+                    alert(`Please login first or create an account.`)
+                })
+            })
+        }else{
+            const h1 = document.querySelector(`.admin-dashboard`)
+            h1.innerText = `No More Available Bundles`
+        }
+    })
 }
-
-
-

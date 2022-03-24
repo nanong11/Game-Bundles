@@ -58,7 +58,7 @@ router.patch(`/:gameId/unArchive`, auth.verifyIfAdmin, async (req, res) => {
 })
 
 // FIND ALL ACTIVE GAMES
-router.get(`/isActive`, auth.verify, async (req, res) => {
+router.get(`/isActive`, async (req, res) => {
     try {
         await gameController.getAllActiveGames().then(result => res.send(result))
     } catch (error) {
