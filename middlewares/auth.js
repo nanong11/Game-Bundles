@@ -7,7 +7,7 @@ module.exports.createToken = (data) => {
         email: data.email,
         isAdmin: data.isAdmin
     }
-    return jwt.sign(userData, process.env.ACCESS_TOKEN_SECRET)
+    return jwt.sign(userData, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30m'})
 }
 
 // VERIFY USER WITH TOKEN - verify user token
