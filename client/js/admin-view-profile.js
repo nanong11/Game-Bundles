@@ -6,11 +6,15 @@ if(token){
     })
     .then(result => result.json())
     .then(result => {
-        const adminProfile = document.querySelector(`#admin-profile`)
-        adminProfile.addEventListener(`click`, () => {
-            console.log(result)
-            window.location.replace(`./admin-profile.html?userId=${result._id}`)
-        })
+        if(result.isAdmin){
+            const adminProfile = document.querySelector(`#admin-profile`)
+            adminProfile.addEventListener(`click`, () => {
+                console.log(result)
+                window.location.replace(`./admin-profile.html?userId=${result._id}`)
+            })
+        }else{
+            window.location.href = `../../error.html`
+        }
     })
 }else{
     window.location.href = `../../error.html`
